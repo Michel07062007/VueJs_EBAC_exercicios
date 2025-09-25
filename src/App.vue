@@ -1,57 +1,52 @@
 <script setup>
-new Vue({
-  el: '#app',
-  data: {
-    numero1: 0,
-    numero2: 0,
-    operacao: '+',
-    resultado: 0
-  },
-  watch: {
-    // Usar watch para monitorar as mudanças e calcular automaticamente
-    numero1() {
-      this.calcular()
-    },
-    numero2() {
-      this.calcular()
-    },
-    operacao() {
-      this.calcular()
-    },
-  },
-  methods: {
-    calcular() {
-      const n1 = parseFloat(this.numero1);
-      const n2 = parseFloat(this.numero2);
-      if (isNaN(n1) || isNaN(n2)) {
+data: {
+  numero1: 0
+  numero2: 0
+  operacao: '+'
+  resultado: 0
+}
+watch: {
+  // Usar watch para monitorar as mudanças e calcular automaticamente
+  numero1(); {
+    this.calcular()
+  }
+  numero2(); {
+    this.calcular()
+  }
+  operacao(); {
+    this.calcular()
+  }
+}
+watch: {
+  calcular(); {
+    const n1 = parseFloat(this.numero1);
+    const n2 = parseFloat(this.numero2);
+    if (isNaN(n1) || isNaN(n2)) {
+      this.resultado = 0;
+      return;
+    }
+    switch (this.operacao) {
+      case '+':
+        this.resultado = n1 + n2;
+        break;
+      case '-':
+        this.resultado = n1 - n2;
+        break;
+      case '*':
+        this.resultado = n1 * n2;
+        break;
+      case '/':
+        if (n2 !== 0) {
+          this.resultado = n1 / n2;
+        } else {
+          this.resultado = 'Erro: Divisão por zero';
+        }
+        break;
+      default:
         this.resultado = 0;
-        return;
-      }
-        
-
-      switch (this.operacao) {
-        case '+':
-          this.resultado = n1 + n2;
-          break;
-        case '-':
-          this.resultado = n1 - n2;
-          break;
-        case '*':
-          this.resultado = n1 * n2;
-          break;
-        case '/':
-          if (n2 !== 0) {
-            this.resultado = n1 / n2;
-          } else {
-            this.resultado = 'Erro: Divisão por zero';
-          }
-          break;
-        default:
-          this.resultado = 0;
-      }
     }
   }
-});
+}
 </script>
 
 <template>
