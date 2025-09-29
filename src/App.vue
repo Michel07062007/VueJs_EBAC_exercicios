@@ -1,52 +1,23 @@
 <script setup>
-data: {
-  numero1: 0
-  numero2: 0
-  operacao: '+'
-  resultado: 0
-}
-watch: {
-  // Usar watch para monitorar as mudanças e calcular automaticamente
-  numero1(); {
-    this.calcular()
-  }
-  numero2(); {
-    this.calcular()
-  }
-  operacao(); {
-    this.calcular()
-  }
-}
-watch: {
-  calcular(); {
-    const n1 = parseFloat(this.numero1);
-    const n2 = parseFloat(this.numero2);
-    if (isNaN(n1) || isNaN(n2)) {
-      this.resultado = 0;
-      return;
+import {ref, computed } from 'vue';
+
+const numero1 = ref(0);
+const numero2 = ref(0);
+const operacao = ref('+');
+
+const resultado = computed (() => {
+  const n1 = Number(numero1.value)
+  const n2 = Number(numero2.value)
+  if (Number.isNaN(n1) || Number.isNaN(n2));
+
+    switch (operacao.value) {
+      case '+': return n1 + n2;
+      case '-': return n1 - n2;
+      case '*': return n1 * n2;
+      case '/': return n2 !== 0 ? n1 / n2: 'Erro: Divisão por zero';
+      default: return 0;
     }
-    switch (this.operacao) {
-      case '+':
-        this.resultado = n1 + n2;
-        break;
-      case '-':
-        this.resultado = n1 - n2;
-        break;
-      case '*':
-        this.resultado = n1 * n2;
-        break;
-      case '/':
-        if (n2 !== 0) {
-          this.resultado = n1 / n2;
-        } else {
-          this.resultado = 'Erro: Divisão por zero';
-        }
-        break;
-      default:
-        this.resultado = 0;
-    }
-  }
-}
+})
 </script>
 
 <template>
@@ -97,4 +68,19 @@ header {
     flex-wrap: wrap;
   }
 }
+
+div {
+  display: inline;
+}
+
+h1, h2 {
+  padding: 50px;
+}
+
+input {
+  padding-right: 20px;
+  margin-right: 10px;
+}
+
+
 </style>
