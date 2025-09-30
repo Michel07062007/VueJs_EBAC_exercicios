@@ -25,16 +25,16 @@ const resultado = computed (() => {
     <h1>Calculadora Aritmética</h1>
     
     <!-- Campos para inserção de números -->
-    <input type="number" v-model="numero1" placeholder="Digite o primeiro número">
-    <input type="number" v-model="numero2" placeholder="Digite o segundo número">
-    
+    <input class="opcoes" type="number" v-model="numero1" placeholder="Digite o primeiro número">
     <!-- Campo select para escolher a operação -->
-    <select v-model="operacao">
+    <select class="opcoes" style="margin: 0px 10px 0px 0px;" v-model="operacao">
       <option value="+">Soma (+)</option>
       <option value="-">Subtração (-)</option>
       <option value="*">Multiplicação (*)</option>
       <option value="/">Divisão (/)</option>
     </select>
+    <input class="opcoes" type="number" v-model="numero2" placeholder="Digite o segundo número">
+    
     
     <h2>Resultado: {{ resultado }}</h2>
     
@@ -69,8 +69,10 @@ header {
   }
 }
 
-div {
-  display: inline;
+#app {
+  display: grid;
+  place-items: center; /* Centraliza horizontal e verticalmente */
+  height: 100vh;
 }
 
 h1, h2 {
@@ -81,6 +83,4 @@ input {
   padding-right: 20px;
   margin-right: 10px;
 }
-
-
 </style>

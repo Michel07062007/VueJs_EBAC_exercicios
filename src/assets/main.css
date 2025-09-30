@@ -1,5 +1,11 @@
 @import './base.css';
 
+body {
+  font-family: "Alan Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 #app {
   max-width: 1280px;
   margin: 0 auto;
@@ -29,7 +35,25 @@ a,
 
   #app {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+    place-items: center; /* Centraliza horizontal e verticalmente */
+    height: 100vh;
   }
+}
+
+.opcoes {
+  border-color: #6c5ce7;
+  border-width: 4px;
+  border-radius: 4px;
+  color: white;
+  background-color:#1f2223;
+  padding: 10px;
+  font-size: 20px;
+  box-shadow: none;
+  outline: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* Remove as setas em navegadores baseados em WebKit */
+  margin: 0; /* Garante que não haja espaços extras */
 }
